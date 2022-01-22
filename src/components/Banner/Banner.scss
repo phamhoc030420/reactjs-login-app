@@ -1,0 +1,17 @@
+.banner {
+    background-color   : white;
+    display            : flex;
+    flex-flow          : row wrap;
+    justify-content    : center;
+    height             : 13rem;
+    align-items        : center;
+    background-position: center;
+    background-size    : cover;
+    background-image   : url('../../assets/images/5.jpg');
+
+    &_title {
+        color      : rgba(255, 255, 255, 0.85);
+        font-weight: bold;
+    }
+
+}
