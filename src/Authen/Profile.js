@@ -7,6 +7,7 @@ import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import Modal from 'react-bootstrap/Modal'
 import _ from 'lodash'
 import Login from './login'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 // import logo from '../image'
 function ProFile(props) {
     const [user, setUser] = useState([]);
@@ -22,6 +23,7 @@ function ProFile(props) {
     const [last_names, setLastNames] = useState('');
     const [avatars, setAvatars] = useState('');
     const [pages, setPage] = useState(1);
+    const history = useHistory();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -112,6 +114,9 @@ function ProFile(props) {
             handleClose1();
             toast.info("Update Success");
         }
+    }
+    const handleCon = () => {
+        history.push('photos');
     }
 
 
@@ -245,7 +250,7 @@ function ProFile(props) {
                         </button>
                     </li>
                 </ul>
-
+                <Button color='primary' onClick={handleCon}>Continue</Button>
 
             </div>
         </>

@@ -1,14 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Col, Container, Row } from 'reactstrap';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Button, Col, Container, Row } from 'reactstrap';
 import './Header.scss';
 
 function Header() {
+    const history = useHistory();
+    const handleHome = () => {
+        history.push("/");
+    }
     return (
         <>
             <header className='header'>
                 <Container>
                     <Row className='justify-content-between'>
+                        <Col xs="auto">
+                            <Button color='primary' onClick={handleHome}>Home</Button>
+
+                        </Col>
                         <Col xs="auto">
                             <p className='header_link header_title' >
                                 Pham Hoc
