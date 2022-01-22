@@ -5,17 +5,18 @@ import { PHOTO_CATEGORY } from "../../constants/gobal";
 import Images from "../../constants/images";
 import { $CombinedState } from "@reduxjs/toolkit";
 import * as Yup from 'yup';
+import { useParams } from "react-router-dom";
 function PhotosFrom(props) {
-    const [anh, setAnh] = useState('https://i.imgur.com/41XtYQ0.jpg');
-    const [titles, setTitles] = useState('');
-    const [category, setCategory] = useState('');
+    const { initialValue, is } = props;
+    const [anh, setAnh] = useState(initialValue ? initialValue.anh : 'https://i.imgur.com/41XtYQ0.jpg');
+    const [titles, setTitles] = useState(initialValue ? initialValue.titles : '');
+    const [category, setCategory] = useState(initialValue ? initialValue.category : '');
+    console.log("hello", category);
     const [error, setError] = useState('');
-    const [id, setId] = useState(null);
     const handleRandom = () => {
         const randomId = Math.trunc(Math.random() * 2000);
         const urls = `https://picsum.photos/id/${randomId}/200/116`;
         setAnh(urls);
-        setId(randomId);
 
     }
     const handleSetCate = (e) => {
@@ -30,7 +31,6 @@ function PhotosFrom(props) {
 
         else {
             const text = {
-                id: id,
                 titles: titles,
                 category: category,
                 anh: anh
@@ -43,11 +43,13 @@ function PhotosFrom(props) {
         }
     }
 
+
+
     return (<>
         <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label>Title </Label>
-                <Input placeholder="Enter your title" onChange={(e) => setTitles(e.target.value)} />
+                <Input placeholder="Enter your title" onChange={(e) => setTitles(e.target.value)} value={titles} />
             </FormGroup>
             <FormGroup>
                 <Label>Category </Label>
@@ -59,10 +61,10 @@ function PhotosFrom(props) {
                 <Button outline color="primary" type="button" onClick={handleRandom}>Random your photo</Button>
                 <br></br>
                 <br></br>
-                <img src={anh ? anh : `https://i.imgur.com/41XtYQ0.jpg`} style={{ width: 170, height: 116 }} />
+                <img src={anh ? anh : `https://i.imgur.com/41XtYQ0.jpg`} style={{ width: 170, height: 116 }} onError={e => e.target.src = handleRandom()} />
             </FormGroup>
             <FormGroup>
-                <Button color="primary" type="submit" >Add your photo</Button>
+                <Button color="primary" type="submit" >{is ? 'Add Your Photos' : 'Update Your Photos'}</Button>
             </FormGroup>
             <p style={{ color: 'red', fontStyle: 'italic' }}>{error}</p>
 

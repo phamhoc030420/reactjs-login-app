@@ -7,13 +7,14 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Images from "../constants/images";
 import { removePhoto, updatePhoto } from '../components/add/photoSlice'
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function Home() {
     const photos = useSelector(state => state.photos);
     const dispatch = useDispatch();
+    const history = useHistory();
     console.log('list', photos);
     const handleEdit = (photo) => {
-        const action = updatePhoto(photo)
-        dispatch(action)
+        history.push(`/photos/${photo.id}`);
     }
     const handleDelete = (photo) => {
         const action = removePhoto(photo.id)

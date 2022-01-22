@@ -23,6 +23,7 @@ function App() {
 
             <Route exact path="/photos" component={Home} />
             <Route path="/photos/add" component={Add} />
+            <Route path="/photos/:photoId" component={Add} />
 
 
           </Switch>
