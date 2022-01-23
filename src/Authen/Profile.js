@@ -30,7 +30,6 @@ function ProFile(props) {
 
     const [shows, setShows] = useState(false);
     const handleClose1 = () => setShows(false);
-    console.log("page", pages);
     const handleShow1 = (e) => {
 
         setShows(true)
@@ -55,9 +54,7 @@ function ProFile(props) {
             const response = await fetch(requesURL);
             const responseJSON = await response.json();
             const { data } = responseJSON;
-            setUser(data)
-            console.log(data);
-            console.log(pages);
+            setUser(data);
 
         }
         fetchPostList();
@@ -82,7 +79,6 @@ function ProFile(props) {
                 'avatar': avatar
 
             }
-            console.log(avatar);
             const newUsers = [...user, arr];
             setUser(newUsers)
             setLastName('');
@@ -118,13 +114,25 @@ function ProFile(props) {
     const handleCon = () => {
         history.push('photos');
     }
+    const handleRandom = () => {
+        const arr = [0, 1, 10, 100, 1003, 1004, 1008, 1009, 1011, 1020];
+        const ran = Math.floor(Math.random() * arr.length);
+        const anh = `https://picsum.photos/id/${arr[ran]}/200/116`;
+        setAvatar(anh);
+    }
+    const handleRandoms = () => {
+        const arr = [0, 1, 10, 100, 1003, 1004, 1008, 1009, 1011, 1020];
+        const ran = Math.floor(Math.random() * arr.length);
+        const url = `https://picsum.photos/id/${arr[ran]}/200/116`;
+        setAvatars(url);
+    }
 
 
     return (
         <>
             <div>
                 <button type='button' onClick={logout} style={{ float: 'right', marginTop: 15, marginRight: 20, borderRadius: 5 }}><i className="fas fa-sign-out-alt"></i> </button>
-                <Button onClick={handleShow} className='btn' color='primary' style={{ float: 'left', marginTop: 15, marginRight: 20, borderRadius: 5 }}><i className="fas fa-plus"></i> Add new users</Button>
+                <Button onClick={handleShow} className='btn' color='primary' style={{ float: 'left', marginTop: 15, borderRadius: 5, marginLeft: 20 }}><i className="fas fa-plus"></i> Add new users</Button>
                 <Modal show={show} onHide={handleClose} animation={false} className='modal-user-container'>
                     <Modal.Header closeButton style={{ backgroundColor: 'blue', last_name: 'white' }}>
                         <Modal.Title>Add New Users</Modal.Title>
@@ -147,8 +155,8 @@ function ProFile(props) {
                                     <input className='input1' type='text' value={last_name} onChange={(e) => setLastName(e.target.value)} />
                                 </div>
                                 <div className='col-6 form-group'>
-                                    <label>Avatar</label>
-                                    <input style={{ width: 200 }} className='input1' type='text' value={avatar} onChange={(e) => setAvatar(e.target.value)} />
+                                    <label type='button' onClick={handleRandom} >Avatar <i style={{ color: 'red' }} className="fas fa-dice"></i></label>
+                                    <input style={{ width: 200 }} className='input1' type='text' value={avatar} onChange={(e) => setAvatar(e.target.value)} disabled />
                                     {/* <input style={{ width: 200 }} className='input1' type='file' value={avatar} onChange={handleAvatar} /> */}
                                 </div>
                             </div>
@@ -219,8 +227,8 @@ function ProFile(props) {
                                     <input className='input1' type='text' value={last_names} onChange={(e) => setLastNames(e.target.value)} />
                                 </div>
                                 <div className='col-6 form-group'>
-                                    <label>Avatar</label>
-                                    <input className='input1' type='text' value={avatars} onChange={(e) => setAvatars(e.target.value)} />
+                                    <label type='button' onClick={handleRandoms} >Avatar <i style={{ color: 'red' }} className="fas fa-dice"></i></label>
+                                    <input className='input1' type='text' value={avatars} onChange={(e) => setAvatars(e.target.value)} disabled />
                                 </div>
                             </div>
                         </div>
@@ -236,21 +244,23 @@ function ProFile(props) {
                     </Modal.Footer>
                 </Modal>
 
-                <ul class="pagination">
-                    <li class="page-item" >
-                        <button class="page-link" aria-label="Previous" onClick={() => setPage(1)} disabled={pages === 1 ? true : false} >
+                <ul className="pagination">
+                    <li className="page-item" >
+                        <button className="page-link" aria-label="Previous" onClick={() => setPage(1)} disabled={pages === 1 ? true : false} >
                             <span aria-hidden="true">&laquo; Previous</span>
                         </button>
                     </li>
 
-                    <li class="page-item">
-                        <button class="page-link" aria-label="Previous" onClick={() => setPage(2)} disabled={pages === 2 ? true : false}>
+                    <li className="page-item">
+                        <button className="page-link" aria-label="Previous" onClick={() => setPage(2)} disabled={pages === 2 ? true : false}>
                             <span aria-hidden="true">Next &raquo; </span>
 
                         </button>
                     </li>
                 </ul>
-                <Button color='primary' onClick={handleCon}>Continue</Button>
+                <div className='photo'>
+                    <Button color='success' onClick={handleCon}>PhoTo App</Button>
+                </div>
 
             </div>
         </>

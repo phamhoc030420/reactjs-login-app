@@ -17,7 +17,6 @@ function Login() {
         var urlencoded = new URLSearchParams();
         urlencoded.append("username", usernames);
         urlencoded.append('password', passwords);
-        console.log(urlencoded.username);
         var requestOptions = {
             method: 'POST',
             //  headers: myHeaders,
@@ -27,20 +26,17 @@ function Login() {
         fetch("https://reqres.in/api/login", requestOptions)
             .then(reponse => {
                 if (reponse.status === 200) {
-                    console.log(reponse.status);
                     return reponse.json();
                 }
                 throw Error(reponse.status)
             })
             .then(result => {
-                console.log(result);
                 localStorage.setItem("Token", result.token)
                 setIsLogin(true);
                 toast.success("Login Success")
 
             })
             .catch(error => {
-                console.log('error', error);
                 toast.error("Login Fail");
             });
     }
@@ -52,7 +48,6 @@ function Login() {
     return (
 
         <>
-            {/* {localStorage.getItem("Token") !== null ? <ProFile /> : */}
             {isLogin === true ? <ProFile onLogoutSucess={onLogoutSucess} /> :
                 <div className='login-background'>
                     <div className='login-container'>

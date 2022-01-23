@@ -11,7 +11,6 @@ function PhotosFrom(props) {
     const [anh, setAnh] = useState(initialValue ? initialValue.anh : 'https://i.imgur.com/41XtYQ0.jpg');
     const [titles, setTitles] = useState(initialValue ? initialValue.titles : '');
     const [category, setCategory] = useState(initialValue ? initialValue.category : '');
-    console.log("hello", category);
     const [error, setError] = useState('');
     const handleRandom = () => {
         const randomId = Math.trunc(Math.random() * 2000);
@@ -46,7 +45,7 @@ function PhotosFrom(props) {
 
 
     return (<>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} style={{ marginTop: 10 }}>
             <FormGroup>
                 <Label>Title </Label>
                 <Input placeholder="Enter your title" onChange={(e) => setTitles(e.target.value)} value={titles} />
@@ -54,6 +53,7 @@ function PhotosFrom(props) {
             <FormGroup>
                 <Label>Category </Label>
                 <Select placeholder="What's your photos category" options={PHOTO_CATEGORY} id='cate' onChange={(e) => handleSetCate(e)} />
+                {/* <Input type="select" placeholder="What's your photos category" options={PHOTO_CATEGORY} id='cate' onChange={(e) => handleSetCate(e)} value={category} /> */}
             </FormGroup>
             <FormGroup>
                 <Label>Photo </Label>

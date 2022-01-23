@@ -1,7 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 const photo = createSlice({
     name: 'photos',
-    initialState: [],
+    initialState: [
+        {
+            id: '1',
+            titles: 'This is my picture',
+            anh: 'https://picsum.photos/id/1057/200/116',
+            category: 'Technology'
+        },
+        {
+            id: '2',
+            titles: 'This is my picture',
+            anh: 'https://picsum.photos/id/106/200/116',
+            category: 'Technology'
+        },
+        {
+            id: '3',
+            titles: 'This is my picture',
+            anh: 'https://picsum.photos/id/1061/200/116',
+            category: 'Technology'
+        },
+        {
+            id: '4',
+            titles: 'This is my picture',
+            anh: 'https://picsum.photos/id/1063/200/116',
+            category: 'Technology'
+        }
+    ],
     reducers: {
         addPhoto: (state, action) => {
             state.push(action.payload);

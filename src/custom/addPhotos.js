@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { toast } from "react-toastify";
 import { Container } from "reactstrap";
 import PhotosFrom from "../components/add/PhotosForm";
 import { addPhoto, updatePhoto } from "../components/add/photoSlice";
@@ -11,6 +12,7 @@ import Images from "../constants/images";
 function Add() {
     const dispatch = useDispatch();
     const history = useHistory();
+
     //edit
     const { photoId } = useParams();
     const isAdd = !photoId;
@@ -24,14 +26,15 @@ function Add() {
         if (isAdd) {
             const newPhoto = { ...value, id: randomNumber() };
             const action = addPhoto(newPhoto);
-            console.log(action);
             dispatch(action);
+            toast.success('Add Success');
             history.push('/photos');
         }
         else {
             const newPhoto = { ...value, id: photoId };
             const action = updatePhoto(newPhoto);
             dispatch(action);
+            toast.info('Update Success')
             history.push('/photos');
         }
 

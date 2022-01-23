@@ -6,22 +6,15 @@ import './Header.scss';
 
 function Header() {
     const history = useHistory();
-    const handleHome = () => {
-        history.push("/");
-    }
     return (
         <>
             <header className='header'>
                 <Container>
                     <Row className='justify-content-between'>
                         <Col xs="auto">
-                            <Button color='primary' onClick={handleHome}>Home</Button>
-
-                        </Col>
-                        <Col xs="auto">
-                            <p className='header_link header_title' >
-                                Pham Hoc
-                            </p>
+                            <NavLink exact
+                                className='header_link' to='/'
+                            >Pham Hoc</NavLink>
 
                         </Col>
                         <Col xs="auto">

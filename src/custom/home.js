@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
@@ -8,17 +8,18 @@ import Header from "../components/Header";
 import Images from "../constants/images";
 import { removePhoto, updatePhoto } from '../components/add/photoSlice'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { toast } from "react-toastify";
 function Home() {
     const photos = useSelector(state => state.photos);
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log('list', photos);
     const handleEdit = (photo) => {
         history.push(`/photos/${photo.id}`);
     }
     const handleDelete = (photo) => {
         const action = removePhoto(photo.id)
         dispatch(action);
+        toast.error("Delete Success")
     }
     return (
         <>
