@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Home from './custom/home';
 import Add from './custom/addPhotos';
 import { useState } from 'react';
+import Weather from './weather';
 
 function App() {
   const [colors, setColor] = useState('');
@@ -20,7 +21,7 @@ function App() {
           <Switch>
 
             <Route exact path="/" component={Login} />
-
+            <Route exact path="/weather" component={Weather} />
             <Route exact path="/photos" component={Home} />
             <Route path="/photos/add" component={Add} />
             <Route path="/photos/:photoId" component={Add} />

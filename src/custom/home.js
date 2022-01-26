@@ -32,6 +32,7 @@ function Home() {
                 <PhotoList photoList={photos} handleEdit={handleEdit} handleDelete={handleDelete} />
 
             </Container>
+            <Link to='/weather' style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none' }}>Weather App</Link>
         </>
     )
 }

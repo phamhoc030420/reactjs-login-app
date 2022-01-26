@@ -1,0 +1,130 @@
+* {
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'montseratt', sans-serif;
+}
+
+.app {
+    background-image       : url('../assets/images/warn.jpg');
+    background-size        : cover;
+    background-position    : bottom;
+    //  width              : 800px;
+    margin                 : auto;
+    border-radius          : 5px;
+
+}
+
+.cool {
+    background-image      : url('../assets/images/cool.jpg');
+    background-size       : cover;
+    background-position   : bottom;
+    // width              : 800px;
+    margin                : auto;
+    border-radius         : 5px;
+}
+
+main {
+    min-height      : 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
+    padding-top     : 50px;
+
+    .home {
+        font-size  : 32px;
+        color      : white;
+        text-shadow: 3px 3px rgba(50, 50, 70, 0.3);
+    }
+
+    .search-box {
+        width : 500px;
+        margin: auto;
+
+        .search-bar {
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow      : 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-bar:focus {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+    }
+
+    .box {
+        color      : white;
+        margin-top : 20px;
+        padding-top: 30px;
+
+        .location {
+            display        : flex;
+            justify-content: center;
+            font-size      : 32px;
+            text-shadow    : 3px 3px rgba(50, 50, 70, 0.5);
+        }
+
+        .date {
+            display        : flex;
+            justify-content: center;
+            font-size      : 20px;
+            font-weight    : 300;
+            font-style     : italic;
+            text-shadow    : 2px 2px rgba(50, 50, 70, 0.5);
+        }
+
+    }
+
+    .weather-box {
+        color: white;
+
+        .temp {
+            width           : 360px;
+            position        : relative;
+            display         : flex;
+            justify-content : center;
+            margin          : 30px auto;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius   : 16px;
+
+            padding    : 15px 25px;
+            font-size  : 102px;
+            font-weight: 900;
+
+            text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+            text-align : center;
+            box-shadow : 3px 6px rgba(0, 0, 0, 0.2);
+
+            .humidity {
+                position       : absolute;
+                display        : flex;
+                justify-content: center;
+                color          : white;
+                margin-top     : 140px;
+                text-shadow    : none;
+
+                .fas {
+                    margin-right: 5px;
+                }
+
+            }
+        }
+
+        .weather {
+            display        : flex;
+            justify-content: center;
+            font-size      : 48px;
+            font-weight    : 700;
+            text-shadow    : 3px 3px rgba(50, 50, 70, 0.5);
+        }
+    }
+}
+
+.error {
+    display        : flex;
+    justify-content: center;
+    font-size      : 48px;
+    font-weight    : 700;
+    text-shadow    : 3px 3px rgba(50, 50, 70, 0.5);
+    color          : white;
+    margin-top     : 100px;
+}
