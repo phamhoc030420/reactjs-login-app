@@ -40,6 +40,11 @@ function Login() {
                 toast.error("Login Fail");
             });
     }
+    const handleSubmitAcc = () => {
+        setIsLogin(true);
+        toast.success("Login Success")
+
+    }
     const onLogoutSucess = () => {
         setUsername('');
         setPassword('');
@@ -85,6 +90,9 @@ function Login() {
                             <div className='col-12 text-center mt-3'>
                                 <i className="fab fa-google-plus-g goggle"></i>
                                 <i className="fab fa-facebook-f face"></i>
+                            </div>
+                            <div className='col-12'>
+                                <p className='withoutacc' onClick={handleSubmitAcc}>Login without account</p>
                             </div>
                         </div>
 
